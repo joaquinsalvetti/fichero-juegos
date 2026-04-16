@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -148,107 +148,163 @@
       font-weight: 700;
       transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
+    .tab:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }
     .tab.active {
       background: #111827;
       color: #ffffff;
       border-color: #111827;
     }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-    .alert {
-      margin-top: 1.25rem;
-      padding: 0.95rem 1rem;
-      border-radius: 18px;
-      background: #eff6ff;
-      color: #1e293b;
-      border: 1px solid #bfdbfe;
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
     }
     table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 1rem;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
       font-size: 0.95rem;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: inset 0 0 0 1px #e2e8f0;
     }
     th, td {
-      padding: 1rem 1rem;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 0.8rem;
       text-align: left;
-    }
-    table.tabla-compacta th,
-    table.tabla-compacta td {
-      padding: 0.6rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
     }
     th {
       background: #f8fafc;
-      color: #475569;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.82rem;
+      color: #475569;
     }
-    tbody tr {
-      background: #ffffff;
-    }
-    tbody tr:hover {
+    tr:hover {
       background: #f8fafc;
     }
-    .actions-cell button {
-      margin-right: 0.5rem;
-      margin-bottom: 0.25rem;
-      padding: 0.6rem 1rem;
-      border-radius: 999px;
-      font-size: 0.88rem;
+    .small-note {
+      font-size: 0.8rem;
+      margin-top: -1rem;
+      margin-bottom: 0.5rem;
+      color: #64748b;
+      font-style: italic;
     }
-    #tablaContainerTodos .actions-cell button {
+    .modal {
       display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
     }
-    #tablaContainerTodos.modo-editar .actions-cell button {
+    .modal.show {
+      display: block;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 2rem;
+      border: 1px solid #888;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover, .close:focus {
+      color: black;
+    }
+    .comentarios-list {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 0.5rem 0;
+    }
+    .comentario-item {
+      background: white;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      border-left: 3px solid #2563eb;
+    }
+    .comentario-fecha {
+      font-size: 0.8rem;
+      color: #999;
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+    .comentario-texto {
+      color: #333;
+      line-height: 1.4;
+    }
+    .comentario-input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      font-family: 'Roboto', Arial, sans-serif;
+    }
+    .status-message {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #10b981;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+    }
+    .status-message.error {
+      background: #ef4444;
+    }
+    .modo-editar .btn-editar,
+    .modo-editar .btn-eliminar,
+    .modo-editar .btn-limpiar {
       display: inline-block;
     }
-    @media (max-width: 640px) {
-      body { padding: 1rem; }
-      .container { padding: 1.25rem; }
-      .actions { flex-direction: column; }
-      table, th, td { display: block; }
-      th { text-align: right; }
-      td { text-align: right; padding-left: 50%; position: relative; }
-      td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 45%;
-        padding-left: 0.75rem;
-        font-weight: 700;
-        text-align: left;
-        color: #475569;
-      }
+    .btn-editar,
+    .btn-eliminar,
+    .btn-limpiar {
+      display: none;
     }
-    .tabla-scroll-wrapper {
-      width: 100%;
-      overflow-x: auto;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 0 0 1px #e2e8f0;
-      padding-bottom: 2px;
+    .btn-editar-modal {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
-    .tab-todos-wrapper, #tab-buscar {
+    .btn-editar-modal button {
+      flex: 1;
+      min-width: 120px;
+    }
+    #btnEditarModoBuscar,
+    #btnEditarModoTodos {
       position: relative;
-    }
-    #btnEditarModo, #btnEditarModoBuscar, #btnEditarModoTodos {
-      position: absolute;
       top: -5.5rem;
-      right: 2rem;
-      z-index: 2;
-      margin: 0;
+      right: 1rem;
+      float: right;
     }
-    @media (max-width: 640px) {
-      #btnEditarModo, #btnEditarModoBuscar, #btnEditarModoTodos {
-        right: 1rem;
-        top: 1rem;
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      #btnEditarModoBuscar,
+      #btnEditarModoTodos {
+        top: auto;
+        right: auto;
+        float: none;
+        margin-bottom: 1rem;
       }
     }
   </style>
@@ -256,7 +312,7 @@
 <body>
   <div class="container">
     <h1>Fichero de juegos</h1>
-    <p>Registra juegos con varias variables y guárdalos en tu navegador.</p>
+    <p>Registra juegos con varias variables y guÃ¡rdalos en tu navegador.</p>
 
     <div class="tabs">
       <button class="tab active" type="button" data-tab="formulario">Registrar</button>
@@ -272,14 +328,14 @@
           <input type="text" id="nombre" placeholder="Ej: Carrera del Castillo" required>
         </div>
         <div style="grid-column: 1 / -1;">
-          <label>Clasificación</label>
+          <label>ClasificaciÃ³n</label>
           <div class="grid" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;">
             <div>
               <select id="clasificacion1">
                 <option value="">Seleccionar</option>
                 <option value="Ronda">Ronda</option>
                 <option value="Deportivo">Deportivo</option>
-                <option value="Salón">Salón</option>
+                <option value="SalÃ³n">SalÃ³n</option>
                 <option value="Musical">Musical</option>
                 <option value="Nocturno">Nocturno</option>
                 <option value="Gran Juego">Gran Juego</option>
@@ -292,7 +348,7 @@
                 <option value="">Seleccionar</option>
                 <option value="Ronda">Ronda</option>
                 <option value="Deportivo">Deportivo</option>
-                <option value="Salón">Salón</option>
+                <option value="SalÃ³n">SalÃ³n</option>
                 <option value="Musical">Musical</option>
                 <option value="Nocturno">Nocturno</option>
                 <option value="Gran Juego">Gran Juego</option>
@@ -305,7 +361,7 @@
                 <option value="">Seleccionar</option>
                 <option value="Ronda">Ronda</option>
                 <option value="Deportivo">Deportivo</option>
-                <option value="Salón">Salón</option>
+                <option value="SalÃ³n">SalÃ³n</option>
                 <option value="Musical">Musical</option>
                 <option value="Nocturno">Nocturno</option>
                 <option value="Gran Juego">Gran Juego</option>
@@ -334,25 +390,21 @@
             <option value="Interior/Exterior">Interior/Exterior</option>
           </select>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;">
-          <div>
-            <label for="participantesMin">Participantes mín.</label>
-            <input type="number" id="participantesMin" placeholder="Ej: 2" min="1">
-          </div>
-          <div>
-            <label for="participantesMax">Participantes máx.</label>
-            <input type="number" id="participantesMax" placeholder="Ej: 6" min="1">
-          </div>
+        <div>
+          <label for="participantesMin">Participantes mÃ­n.</label>
+          <input type="number" id="participantesMin" placeholder="Ej: 6">
         </div>
-        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;">
-          <div>
-            <label for="edadesMin">Edad mínima</label>
-            <input type="number" id="edadesMin" placeholder="Ej: 2" min="0">
-          </div>
-          <div>
-            <label for="edadesMax">Edad máxima</label>
-            <input type="number" id="edadesMax" placeholder="Ej: 18" min="0">
-          </div>
+        <div>
+          <label for="participantesMax">Participantes mÃ¡x.</label>
+          <input type="number" id="participantesMax" placeholder="Ej: 30">
+        </div>
+        <div>
+          <label for="edadMin">Edad mÃ­nima</label>
+          <input type="number" id="edadMin" placeholder="Ej: 8">
+        </div>
+        <div>
+          <label for="edadMax">Edad mÃ¡xima</label>
+          <input type="number" id="edadMax" placeholder="Ej: 100">
         </div>
         <div style="grid-column: 1 / -1;">
           <label for="objetivo">Objetivo</label>
@@ -360,7 +412,7 @@
         </div>
         <div style="grid-column: 1 / -1;">
           <label for="desarrollo">Desarrollo</label>
-          <textarea id="desarrollo" placeholder="Explica cómo se desarrolla el juego paso a paso..."></textarea>
+          <textarea id="desarrollo" placeholder="Explica cÃ³mo se desarrolla el juego paso a paso..."></textarea>
         </div>
         <div style="grid-column: 1 / -1;">
           <label for="materiales">Materiales</label>
@@ -368,7 +420,7 @@
         </div>
         <div style="grid-column: 1 / -1;">
           <label for="variantes">Variantes</label>
-          <textarea id="variantes" placeholder="Añade variantes o reglas opcionales..."></textarea>
+          <textarea id="variantes" placeholder="AÃ±ade variantes o reglas opcionales..."></textarea>
         </div>
         <div style="grid-column: 1 / -1;">
           <label for="observaciones">Observaciones</label>
@@ -377,38 +429,109 @@
       </div>
 
       <div class="actions">
-        <button class="primary" id="guardarBtn">Registrar juego</button>
-        <button class="secondary" id="limpiarBtn">Limpiar formulario</button>
+        <button class="primary" id="guardarBtn" type="button">Registrar juego</button>
+        <button class="secondary" id="limpiarBtn" type="button">Limpiar formulario</button>
       </div>
-
-      <div class="alert" id="mensaje" style="display:none;"></div>
     </div>
 
-    <!-- Panel Buscar -->
     <div class="tab-panel" id="tab-buscar">
-      <button id="btnEditarModoBuscar" class="secondary">Editar</button>
-      <div style="margin-bottom:1.2rem;">
-        <input type="text" id="filtro" placeholder="Buscar por nombre, clasificación, etc..." style="width:100%;padding:1rem;border-radius:18px;border:1px solid #d1d5db;">
+      <div>
+        <button class="primary" id="btnEditarModoBuscar" type="button">Editar</button>
+        <label for="filtro">Buscar</label>
+        <input type="text" id="filtro" placeholder="Buscar por nombre, clasificaciÃ³n, etc...">
       </div>
-      <div id="tablaContainer"></div>
+      <table id="tabla-buscar">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>ClasificaciÃ³n</th>
+            <th>Intensidad</th>
+            <th>Lugar</th>
+            <th>Participantes</th>
+            <th>Edades</th>
+            <th>Materiales</th>
+            <th>Comentario</th>
+            <th>Ficha</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
-    <!-- Panel Planificar -->
     <div class="tab-panel" id="tab-planificar">
-      <div id="planificar-filtros" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.2rem;"></div>
-      <div id="planificar-contenido"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <label for="filtroClasificacion">ClasificaciÃ³n</label>
+          <select id="filtroClasificacion"><option value="">(Todos)</option></select>
+        </div>
+        <div>
+          <label for="filtroIntensidad">Intensidad</label>
+          <select id="filtroIntensidad"><option value="">(Todos)</option></select>
+        </div>
+        <div>
+          <label for="filtroLugar">Lugar</label>
+          <select id="filtroLugar"><option value="">(Todos)</option></select>
+        </div>
+        <div>
+          <label for="filtroParticipantes">Participantes</label>
+          <input type="number" id="filtroParticipantes" placeholder="NÃºmero">
+        </div>
+        <div>
+          <label for="filtroEdad">Edad</label>
+          <input type="number" id="filtroEdad" placeholder="NÃºmero">
+        </div>
+        <div>
+          <label for="filtroMateriales">Materiales</label>
+          <select id="filtroMateriales"><option value="">(Todos)</option></select>
+        </div>
+      </div>
+      <table id="tabla-planificar">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>ClasificaciÃ³n</th>
+            <th>Intensidad</th>
+            <th>Lugar</th>
+            <th>Participantes</th>
+            <th>Edad</th>
+            <th>Materiales</th>
+            <th>Ficha</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
-    <!-- Panel Todos los juegos -->
-    <div class="tab-panel tab-todos-wrapper" id="tab-todos">
-      <button id="btnEditarModoTodos" class="secondary">Editar</button>
-      <div id="tablaContainerTodos"></div>
+    <div class="tab-panel" id="tab-todos">
+      <button class="primary" id="btnEditarModoTodos" type="button">Editar</button>
+      <table id="tabla-todos">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>ClasificaciÃ³n</th>
+            <th>Intensidad</th>
+            <th>Lugar</th>
+            <th>Participantes</th>
+            <th>Edades</th>
+            <th>Materiales</th>
+            <th>Comentario</th>
+            <th>Ficha</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="fichaModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="fichaContent"></div>
     </div>
   </div>
 
   <script>
-    // =============== CONFIGURACIÓN FIREBASE ===============
-    // IMPORTANTE: Reemplaza estos valores con tu configuración de Firebase
+    // Firebase Config (REEMPLAZA CON TUS CREDENCIALES)
     const firebaseConfig = {
       apiKey: "AIzaSyB_ejemplo_reemplaza_esto",
       authDomain: "fichero-de-juegos.firebaseapp.com",
@@ -419,1014 +542,360 @@
       appId: "1:123456789:web:abc123def456"
     };
 
-    // Inicializar Firebase
     let firebaseReady = false;
     try {
       firebase.initializeApp(firebaseConfig);
-      const database = firebase.database();
-      const juegoRef = database.ref('juegos');
       firebaseReady = true;
-      console.log('✓ Firebase inicializado correctamente');
     } catch (error) {
-      console.warn('Firebase no disponible, usando almacenamiento local:', error.message);
-      firebaseReady = false;
+      console.warn('Firebase no disponible, usando almacenamiento local: ' + error.message);
     }
 
-    // =============== VARIABLES Y CONSTANTES ===============
-    const STORAGE_KEY = 'baseDatosJuegos';
     let juegos = [];
-    let editIndex = -1;
-    let modoEditarHabilitado = false;
 
-    const $ = id => document.getElementById(id);
-    const campos = ['nombre','intensidad','lugar','objetivo','desarrollo','materiales','variantes','observaciones'];
-    const opcionesClasificacion = ['Ronda','Deportivo','Salón','Musical','Nocturno','Gran Juego','Cooperativo','Competitivo'];
+    function $(id) { return document.getElementById(id); }
 
-    function getClasificacionValues() {
-      return ['clasificacion1','clasificacion2','clasificacion3']
-        .map(id => $(id).value.trim())
-        .filter(value => value);
-    }
-
-    function setClasificacionValues(values) {
-      const valores = Array.isArray(values) ? values : String(values).split(',').map(v => v.trim()).filter(v => v);
-      ['clasificacion1','clasificacion2','clasificacion3'].forEach((id, index) => {
-        $(id).value = valores[index] || '';
-      });
-      actualizarClasificacionSelects();
-    }
-
-    function actualizarClasificacionSelects() {
-      const seleccionadas = getClasificacionValues();
-      ['clasificacion1','clasificacion2','clasificacion3'].forEach((id, index) => {
-        const select = $(id);
-        const valorActual = select.value;
-        const bloqueadas = seleccionadas.slice(0, index);
-        select.innerHTML = '<option value="">Seleccionar</option>' + opcionesClasificacion
-          .filter(opcion => !bloqueadas.includes(opcion))
-          .map(opcion => `<option value="${opcion}">${opcion}</option>`)
-          .join('');
-        if (valorActual && !bloqueadas.includes(valorActual)) {
-          select.value = valorActual;
-        }
-      });
-    }
-
-    function actualizarIntensidadColor() {
-      // Esta función ya no aplica estilos especiales a intensidad
-      actualizarEstadosCampos();
-    }
-
-    function actualizarEstadosCampos() {
-      const todosLosCampos = document.querySelectorAll('input, select, textarea');
-      todosLosCampos.forEach(campo => {
-        if (campo.value.trim()) {
-          campo.classList.add('filled');
-        } else {
-          campo.classList.remove('filled');
-        }
-      });
-    }
-
-    function habilitarModoEditar() {
-      modoEditarHabilitado = !modoEditarHabilitado;
-      // Cambiar color de ambos botones Editar
-      const btnBuscar = document.getElementById('btnEditarModoBuscar');
-      const btnTodos = document.getElementById('btnEditarModoTodos');
-      const tablaContainerTodos = document.getElementById('tablaContainerTodos');
-      if (modoEditarHabilitado) {
-        // Solicitar contraseña solo al habilitar
-        const contraseña = prompt('Ingresa la contraseña para habilitar la edición:');
-        if (contraseña === null) { modoEditarHabilitado = false; return; }
-        if (contraseña !== 'jugar es abrir la puerta prohibida') {
-          mostrarMensaje('Contraseña incorrecta.', 'error');
-          modoEditarHabilitado = false;
-          return;
-        }
-        if (btnBuscar) {
-          btnBuscar.style.background = '#111827';
-          btnBuscar.style.color = '#fff';
-        }
-        if (btnTodos) {
-          btnTodos.style.background = '#111827';
-          btnTodos.style.color = '#fff';
-        }
-        if (tablaContainerTodos) {
-          tablaContainerTodos.classList.add('modo-editar');
-        }
-        mostrarMensaje('Modo editar habilitado. Ahora puedes editar y eliminar juegos.');
-      } else {
-        if (btnBuscar) {
-          btnBuscar.style.background = '';
-          btnBuscar.style.color = '';
-        }
-        if (btnTodos) {
-          btnTodos.style.background = '';
-          btnTodos.style.color = '';
-        }
-        if (tablaContainerTodos) {
-          tablaContainerTodos.classList.remove('modo-editar');
-        }
-        mostrarMensaje('Modo editar deshabilitado.');
-      }
-      // Actualizar ambas tablas
-      actualizarTabla();
-      actualizarTablaTodos();
-    }
-
-    function mostrarMensaje(texto, tipo = 'info') {
-      const mensaje = $('mensaje');
-      mensaje.textContent = texto;
-      mensaje.style.display = 'block';
-      mensaje.style.background = tipo === 'error' ? '#fdecea' : '#e8f0fe';
-      mensaje.style.color = tipo === 'error' ? '#991b1b' : '#1a202c';
-      setTimeout(() => mensaje.style.display = 'none', 3000);
-    }
-
-    function limpiarFormulario() {
-      campos.forEach(c => $(c).value = '');
-      ['clasificacion1','clasificacion2','clasificacion3'].forEach(id => $(id).value = '');
-      actualizarClasificacionSelects();
-      $('participantesMin').value = '';
-      $('participantesMax').value = '';
-      $('edadesMin').value = '';
-      $('edadesMax').value = '';
-      $('intensidad').value = '';
-      actualizarEstadosCampos();
-      actualizarIntensidadColor();
-      editIndex = -1;
-      $('guardarBtn').textContent = 'Registrar juego';
-    }
-
-    function guardarDatos() {
-      // Guardar primero en localStorage (backup)
-      guardarEnLocalStorage();
-      // Intentar guardar en Firebase
-      guardarEnFirebase();
-    }
-
+    // Almacenamiento
     function guardarEnLocalStorage() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(juegos));
-      } catch (error) {
-        console.error('Error al guardar en localStorage:', error);
-      }
+      try { localStorage.setItem('baseDatosJuegos', JSON.stringify(juegos)); }
+      catch (error) { console.error('Error localStorage:', error); }
     }
 
     function guardarEnFirebase() {
-      if (!firebaseReady) {
-        mostrarMensajeGuardado();
-        return;
-      }
-
+      if (!firebaseReady) return;
       try {
-        // Convertir array de juegos a objeto con IDs para Firebase
-        const juegosPorGuardar = {};
-        juegos.forEach((juego, idx) => {
-          juegosPorGuardar[idx] = juego;
+        const db = firebase.database();
+        db.ref('juegos').set(juegos, (error) => {
+          if (error) console.error('Error Firebase:', error);
         });
-
-        juegoRef.set(juegosPorGuardar, (error) => {
-          if (error) {
-            console.error('Error al guardar en Firebase:', error);
-            mostrarMensaje('Error en sincronización con Firebase. Se guarda localmente.', 'error');
-          } else {
-            mostrarMensajeGuardado();
-            console.log('✓ Datos sincronizados con Firebase');
-          }
-        });
-      } catch (error) {
-        console.error('Error en guardarEnFirebase:', error);
-      }
+      } catch (error) { console.error('Error Firebase:', error); }
     }
 
-    function mostrarMensajeGuardado() {
-      const mensaje = $('mensaje');
-      const provider = firebaseReady ? '☁️ Sincronizado en la nube' : '✓ Guardado localmente';
-      mensaje.textContent = provider;
-      mensaje.style.display = 'block';
-      mensaje.style.background = '#dcfce7';
-      mensaje.style.color = '#15803d';
-      setTimeout(() => mensaje.style.display = 'none', 2000);
+    function guardarDatos() {
+      guardarEnLocalStorage();
+      if (firebaseReady) guardarEnFirebase();
+      mostrarMensajeGuardado();
     }
 
     function cargarDesdeLocalStorage() {
       try {
-        const datos = localStorage.getItem(STORAGE_KEY);
-        juegos = datos ? JSON.parse(datos) : [];
-        // Migrar comentarioUsuario a comentarios[] si es necesario
-        juegos.forEach(juego => {
-          if (juego.comentarioUsuario && !juego.comentarios) {
-            juego.comentarios = [{
-              texto: juego.comentarioUsuario,
-              fecha: new Date().toLocaleDateString()
-            }];
-            delete juego.comentarioUsuario;
+        const datos = localStorage.getItem('baseDatosJuegos');
+        if (datos) {
+          const parsed = JSON.parse(datos);
+          if (Array.isArray(parsed)) {
+            juegos = parsed.map(j => ({ ...j, comentarios: Array.isArray(j.comentarios) ? j.comentarios : [] }));
           }
-          if (!juego.comentarios) {
-            juego.comentarios = [];
-          }
-        });
-        guardarDatos();
-        console.log(`✓ Se cargaron ${juegos.length} juegos desde almacenamiento local`);
-      } catch (error) {
-        console.error('Error al cargar desde localStorage:', error);
-        juegos = [];
-        mostrarMensaje('Error al cargar los datos. Se inicia con base de datos vacía.', 'error');
-      }
+        }
+      } catch (error) { console.error('Error al cargar:', error); }
     }
 
     function cargarDesdeFirebase() {
-      if (!firebaseReady) {
-        console.log('Firebase no disponible, usando solo almacenamiento local');
-        return;
-      }
-
-      juegoRef.on('value', (snapshot) => {
-        try {
-          const datos = snapshot.val();
-          if (datos) {
-            // Firebase devuelve un objeto, convertir a array
-            juegos = Object.values(datos).map(juego => {
-              if (!juego.comentarios) juego.comentarios = [];
-              return juego;
-            });
-            console.log(`✓ Se sincronizaron ${juegos.length} juegos desde Firebase`);
-          } else {
-            juegos = [];
-            console.log('Base de datos vacía');
-          }
-          // Guardar también en localStorage como backup
-          guardarDatos();
-          // Actualizar tablas
-          actualizarTabla();
-          actualizarTablaTodos();
-          renderizarFiltrosPlanificar();
-          filtrarPlanificar();
-        } catch (error) {
-          console.error('Error al procesar datos de Firebase:', error);
-        }
-      }, (error) => {
-        console.error('Error al leer Firebase:', error);
-        mostrarMensaje('Error al conectar con la nube. Usando datos locales.', 'error');
-      });
-    }
-
-    function validarFormulario() {
-      if (!$('nombre').value.trim()) {
-        mostrarMensaje('El nombre del juego es obligatorio.', 'error');
-        return false;
-      }
-      return true;
-    }
-
-    function normalizarTexto(texto) {
-      return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-    }
-
-    function actualizarTabla() {
-      const filtroNormalizado = normalizarTexto($('filtro').value);
-      const tablaContainer = $('tablaContainer');
-      
-      if (!filtroNormalizado.trim()) {
-        tablaContainer.innerHTML = '';
-        return;
-      }
-      
-      let filas = juegos
-        .map((juego, index) => ({...juego, index}))
-        .filter(juego => {
-          const textNormalizado = normalizarTexto(Object.values(juego).join(' '));
-          return textNormalizado.includes(filtroNormalizado);
-        });
-
-      if (filas.length === 0) {
-        tablaContainer.innerHTML = '<p>No hay resultados.</p>';
-        return;
-      }
-
-      let html = '<table><thead><tr>' +
-        '<th>Nombre</th><th>Clasificación</th><th>Intensidad</th><th>Lugar</th><th>Participantes</th><th>Edades</th><th>Materiales</th><th>Comentario</th>';
-      if (modoEditarHabilitado) html += '<th>Acciones</th>';
-      html += '<th>Ficha</th>' +
-        '</tr></thead><tbody>';
-
-      filas.forEach(juego => {
-        // Generar HTML de comentarios para la celda
-        let comentariosCellHTML = '';
-        if (modoEditarHabilitado && juego.comentarios && juego.comentarios.length > 0) {
-          // En modo editar: mostrar comentarios con botón de eliminar
-          comentariosCellHTML = '<div style="display:flex;flex-direction:column;gap:0.5rem;">';
-          juego.comentarios.forEach((com, idx) => {
-            comentariosCellHTML += `<div style="background:#f0f0f0;padding:0.5rem;border-radius:6px;border-left:3px solid #666;display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
-              <span><em>${com.fecha}</em>: ${com.texto}</span>
-              <button class="danger mini" onclick="eliminarComentarioIndividual(${juego.index}, ${idx})" style="padding:0.25rem 0.5rem;margin:0;">✕</button>
-            </div>`;
-          });
-          comentariosCellHTML += `<input type="text" class="comentario-input" data-idx="${juego.index}" placeholder="Agregar comentario..." style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #d1d5db;font-size:0.9rem;margin-top:0.5rem;">`;
-          comentariosCellHTML += '</div>';
-        } else {
-          // No en modo editar: solo el input
-          comentariosCellHTML = `<input type="text" class="comentario-input" data-idx="${juego.index}" placeholder="Agregar comentario..." style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #d1d5db;font-size:0.9rem;">`;
-        }
-
-        html += `<tr>` +
-          `<td data-label="Nombre">${juego.nombre}</td>` +
-          `<td data-label="Clasificación">${juego.clasificacion || '-'}</td>` +
-          `<td data-label="Intensidad">${juego.intensidad || '-'}</td>` +
-          `<td data-label="Lugar">${juego.lugar || '-'}</td>` +
-          `<td data-label="Participantes">${juego.participantes || '-'}</td>` +
-          `<td data-label="Edades">${juego.edades || '-'}</td>` +
-          `<td data-label="Materiales">${juego.materiales || '-'}</td>` +
-          `<td data-label="Comentario">${comentariosCellHTML}</td>`;
-        if (modoEditarHabilitado) {
-          html += `<td data-label="Acciones" class="actions-cell">` +
-            `<button class="secondary" onclick="editarJuego(${juego.index})">Editar</button>` +
-            `<button class="danger" onclick="eliminarJuego(${juego.index})">Eliminar</button>` +
-          `</td>`;
-        }
-        html += `<td><button class="mini secondary" onclick="mostrarFicha(juegos[${juego.index}])">Ver ficha</button> <button class="mini secondary" onclick="descargarFichaPDF(juegos[${juego.index}])">PDF</button></td>` +
-          `</tr>`;
-      });
-
-      html += '</tbody></table>';
-      tablaContainer.innerHTML = html;
-      // Guardar comentario al presionar Enter
-      tablaContainer.querySelectorAll('.comentario-input').forEach(input => {
-        input.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') {
-            const idx = parseInt(this.dataset.idx, 10);
-            const comentario = this.value.trim();
-            if (comentario) {
-              if (!juegos[idx].comentarios) juegos[idx].comentarios = [];
-              juegos[idx].comentarios.push({
-                texto: comentario,
-                fecha: new Date().toLocaleDateString()
-              });
-              this.value = '';
-              guardarEnLocalStorage();
+      if (!firebaseReady) return;
+      try {
+        const db = firebase.database();
+        db.ref('juegos').on('value', (snapshot) => {
+          if (snapshot.exists()) {
+            const datos = snapshot.val();
+            if (Array.isArray(datos)) {
+              juegos = datos.map(j => ({ ...j, comentarios: Array.isArray(j.comentarios) ? j.comentarios : [] }));
               actualizarTabla();
+              actualizarTablaTodos();
             }
-            e.preventDefault();
           }
         });
-        input.addEventListener('blur', function() {
-          const idx = parseInt(this.dataset.idx, 10);
-          const comentario = this.value.trim();
-          if (comentario) {
-            if (!juegos[idx].comentarios) juegos[idx].comentarios = [];
-            juegos[idx].comentarios.push({
-              texto: comentario,
-              fecha: new Date().toLocaleDateString()
-            });
-            this.value = '';
-            guardarEnLocalStorage();
-            actualizarTabla();
-          }
-        });
+      } catch (error) { console.error('Error Firebase:', error); }
+    }
+
+    function mostrarMensajeGuardado() {
+      const msg = document.createElement('div');
+      msg.className = 'status-message';
+      msg.textContent = firebaseReady ? 'â˜ï¸ Sincronizado en la nube' : 'âœ“ Guardado localmente';
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 2000);
+    }
+
+    // Tablas
+    function actualizarTabla() {
+      const filtro = $('filtro').value.toLowerCase();
+      const tbody = $('tabla-buscar').querySelector('tbody');
+      tbody.innerHTML = '';
+      const filtrados = juegos.filter(j => 
+        (j.nombre || '').toLowerCase().includes(filtro) ||
+        (j.clasificacion || '').toLowerCase().includes(filtro) ||
+        (j.materiales || '').toLowerCase().includes(filtro)
+      );
+      filtrados.forEach(juego => {
+        const idx = juegos.indexOf(juego);
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td>${juego.nombre || '-'}</td>
+          <td>${juego.clasificacion || '-'}</td>
+          <td>${juego.intensidad || '-'}</td>
+          <td>${juego.lugar || '-'}</td>
+          <td>${juego.participantes || '-'}</td>
+          <td>${juego.edades || '-'}</td>
+          <td>${juego.materiales || '-'}</td>
+          <td><input type="text" class="comentario-input" placeholder="Agregar comentario..." data-idx="${idx}"></td>
+          <td>
+            <button class="secondary mini" onclick="mostrarFicha(${idx})">Ver ficha</button>
+            <button class="secondary mini" onclick="descargarFichaPDF(${idx})">PDF</button>
+          </td>
+        `;
+        tbody.appendChild(fila);
+        const input = fila.querySelector('.comentario-input');
+        if (juegos[idx].comentarios?.length > 0) {
+          const div = document.createElement('div');
+          div.className = 'comentarios-list';
+          juegos[idx].comentarios.forEach((c, ci) => {
+            div.innerHTML += `<div class="comentario-item"><div class="comentario-fecha">${c.fecha}</div><div class="comentario-texto">${c.texto}</div><button class="danger mini btn-eliminar" onclick="eliminarComentario(${idx},${ci})">Eliminar</button></div>`;
+          });
+          input.parentElement.appendChild(div);
+        }
+        input.addEventListener('blur', () => guardarComentario(idx, input));
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') guardarComentario(idx, input); });
       });
     }
 
     function actualizarTablaTodos() {
-      const tablaContainer = $('tablaContainerTodos');
-      const filas = juegos
-        .map((juego, index) => ({...juego, index}))
-        .sort((a, b) => (a.nombre || '').localeCompare(b.nombre || '', 'es', {sensitivity: 'base'}));
-
-      if (filas.length === 0) {
-        tablaContainer.innerHTML = '<p>No hay juegos registrados.</p>';
-        return;
-      }
-
-      let html = '<table><thead><tr>' +
-        '<th>Nombre</th><th>Clasificación</th><th>Intensidad</th><th>Lugar</th><th>Participantes</th><th>Edades</th><th>Materiales</th><th>Comentario</th>';
-      if (modoEditarHabilitado) html += '<th>Acciones</th>';
-      html += '<th>Ficha</th>' +
-        '</tr></thead><tbody>';
-
-      filas.forEach(juego => {
-        // Generar HTML de comentarios para la celda
-        let comentariosCellHTML = '';
-        if (modoEditarHabilitado && juego.comentarios && juego.comentarios.length > 0) {
-          // En modo editar: mostrar comentarios con botón de eliminar
-          comentariosCellHTML = '<div style="display:flex;flex-direction:column;gap:0.5rem;">';
-          juego.comentarios.forEach((com, idx) => {
-            comentariosCellHTML += `<div style="background:#f0f0f0;padding:0.5rem;border-radius:6px;border-left:3px solid #666;display:flex;justify-content:space-between;align-items:center;font-size:0.85rem;">
-              <span><em>${com.fecha}</em>: ${com.texto}</span>
-              <button class="danger mini" onclick="eliminarComentarioIndividual(${juego.index}, ${idx})" style="padding:0.25rem 0.5rem;margin:0;">✕</button>
-            </div>`;
+      const tbody = $('tabla-todos').querySelector('tbody');
+      tbody.innerHTML = '';
+      const ordenados = [...juegos].sort((a, b) => (a.nombre || '').localeCompare(b.nombre || ''));
+      ordenados.forEach(juego => {
+        const idx = juegos.indexOf(juego);
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td>${juego.nombre || '-'}</td>
+          <td>${juego.clasificacion || '-'}</td>
+          <td>${juego.intensidad || '-'}</td>
+          <td>${juego.lugar || '-'}</td>
+          <td>${juego.participantes || '-'}</td>
+          <td>${juego.edades || '-'}</td>
+          <td>${juego.materiales || '-'}</td>
+          <td><input type="text" class="comentario-input" placeholder="Agregar comentario..." data-idx="${idx}"></td>
+          <td>
+            <button class="secondary mini" onclick="mostrarFicha(${idx})">Ver ficha</button>
+            <button class="secondary mini" onclick="descargarFichaPDF(${idx})">PDF</button>
+          </td>
+        `;
+        tbody.appendChild(fila);
+        const input = fila.querySelector('.comentario-input');
+        if (juegos[idx].comentarios?.length > 0) {
+          const div = document.createElement('div');
+          div.className = 'comentarios-list';
+          juegos[idx].comentarios.forEach((c, ci) => {
+            div.innerHTML += `<div class="comentario-item"><div class="comentario-fecha">${c.fecha}</div><div class="comentario-texto">${c.texto}</div><button class="danger mini btn-eliminar" onclick="eliminarComentario(${idx},${ci})">Eliminar</button></div>`;
           });
-          comentariosCellHTML += `<input type="text" class="comentario-input" data-idx="${juego.index}" placeholder="Agregar comentario..." style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #d1d5db;font-size:0.9rem;margin-top:0.5rem;">`;
-          comentariosCellHTML += '</div>';
-        } else {
-          // No en modo editar: solo el input
-          comentariosCellHTML = `<input type="text" class="comentario-input" data-idx="${juego.index}" placeholder="Agregar comentario..." style="width:100%;padding:0.5rem;border-radius:8px;border:1px solid #d1d5db;font-size:0.9rem;">`;
+          input.parentElement.appendChild(div);
         }
-
-        html += `<tr>` +
-          `<td data-label="Nombre">${juego.nombre}</td>` +
-          `<td data-label="Clasificación">${juego.clasificacion || '-'}</td>` +
-          `<td data-label="Intensidad">${juego.intensidad || '-'}</td>` +
-          `<td data-label="Lugar">${juego.lugar || '-'}</td>` +
-          `<td data-label="Participantes">${juego.participantes || '-'}</td>` +
-          `<td data-label="Edades">${juego.edades || '-'}</td>` +
-          `<td data-label="Materiales">${juego.materiales || '-'}</td>` +
-          `<td data-label="Comentario">${comentariosCellHTML}</td>`;
-        if (modoEditarHabilitado) {
-          html += `<td data-label="Acciones" class="actions-cell">` +
-            `<button class="secondary" onclick="editarJuego(${juego.index})">Editar</button>` +
-            `<button class="danger" onclick="eliminarJuego(${juego.index})">Eliminar</button>` +
-          `</td>`;
-        }
-        html += `<td><button class="mini secondary" onclick="mostrarFicha(juegos[${juego.index}])">Ver ficha</button> <button class="mini secondary" onclick="descargarFichaPDF(juegos[${juego.index}])">PDF</button></td>` +
-          `</tr>`;
-      });
-
-      html += '</tbody></table>';
-      tablaContainer.innerHTML = html;
-      // Guardar comentario al presionar Enter
-      tablaContainer.querySelectorAll('.comentario-input').forEach(input => {
-        input.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') {
-            const idx = parseInt(this.dataset.idx, 10);
-            const comentario = this.value.trim();
-            if (comentario) {
-              if (!juegos[idx].comentarios) juegos[idx].comentarios = [];
-              juegos[idx].comentarios.push({
-                texto: comentario,
-                fecha: new Date().toLocaleDateString()
-              });
-              this.value = '';
-              guardarDatos();
-              actualizarTablaTodos();
-            }
-            e.preventDefault();
-          }
-        });
-        input.addEventListener('blur', function() {
-          const idx = parseInt(this.dataset.idx, 10);
-          const comentario = this.value.trim();
-          if (comentario) {
-            if (!juegos[idx].comentarios) juegos[idx].comentarios = [];
-            juegos[idx].comentarios.push({
-              texto: comentario,
-              fecha: new Date().toLocaleDateString()
-            });
-            this.value = '';
-            guardarDatos();
-            actualizarTablaTodos();
-          }
-        });
+        input.addEventListener('blur', () => guardarComentario(idx, input));
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') guardarComentario(idx, input); });
       });
     }
 
-    function filtrarColumnaTodos(key, valor) {
-      if (valor) {
-        filtrosColumna[key] = valor;
-      } else {
-        delete filtrosColumna[key];
-      }
-      actualizarTablaTodos();
-    }
-
-    function registrarJuego() {
-      if (!validarFormulario()) return;
-
-      const nuevoJuego = {};
-      campos.forEach(c => nuevoJuego[c] = $(c).value.trim());
-      nuevoJuego.clasificacion = getClasificacionValues().join(', ');
-      const minPart = $('participantesMin').value.trim();
-      const maxPart = $('participantesMax').value.trim();
-      nuevoJuego.participantes = minPart && maxPart ? `${minPart}-${maxPart}` : minPart || maxPart || '';
-      const minEdad = $('edadesMin').value.trim();
-      const maxEdad = $('edadesMax').value.trim();
-      nuevoJuego.edades = minEdad && maxEdad ? `${minEdad}-${maxEdad}` : minEdad || maxEdad || '';
-
-      // Guardar fecha de registro si es nuevo
-      if (editIndex >= 0) {
-        // Mantener la fecha original si existe
-        nuevoJuego.fechaRegistro = juegos[editIndex].fechaRegistro || new Date().toLocaleDateString();
-        juegos[editIndex] = nuevoJuego;
-        mostrarMensaje('Juego actualizado correctamente.');
-      } else {
-        nuevoJuego.fechaRegistro = new Date().toLocaleDateString();
-        juegos.push(nuevoJuego);
-        mostrarMensaje('Juego registrado correctamente.');
-      }
-
-      guardarDatos();
-      actualizarTabla();
-      actualizarTablaTodos();
-      limpiarFormulario();
-    }
-
-    function editarJuego(index) {
-      const juego = juegos[index];
-      campos.forEach(c => $(c).value = juego[c] || '');
-      setClasificacionValues(juego.clasificacion || []);
-      if (juego.participantes) {
-        const partes = juego.participantes.split('-').map(x=>parseInt(x.trim(),10));
-        $('participantesMin').value = partes[0] || '';
-        $('participantesMax').value = partes[1] || '';
-      } else {
-        $('participantesMin').value = '';
-        $('participantesMax').value = '';
-      }
-      if (juego.edades) {
-        const partesEdad = juego.edades.split('-').map(x=>parseInt(x.trim(),10));
-        $('edadesMin').value = partesEdad[0] || '';
-        $('edadesMax').value = partesEdad[1] || '';
-      } else {
-        $('edadesMin').value = '';
-        $('edadesMax').value = '';
-      }
-      editIndex = index;
-      $('guardarBtn').textContent = 'Guardar cambios';
-      actualizarEstadosCampos();
-      actualizarIntensidadColor();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function eliminarJuego(index) {
-      if (!confirm('¿Eliminar este juego?')) return;
-      juegos.splice(index, 1);
-      guardarEnLocalStorage();
-      actualizarTabla();
-      actualizarTablaTodos();
-      mostrarMensaje('Juego eliminado.');
-    }
-
-    function borrarTodo() {
-      if (!confirm('¿Borrar todos los juegos registrados?')) return;
-      juegos = [];
-      guardarEnLocalStorage();
-      actualizarTabla();
-      actualizarTablaTodos();
-      mostrarMensaje('Base de datos vaciada.');
-    }
-
-    function eliminarComentarioIndividual(indexJuego, indexComentario) {
-      if (!confirm('¿Eliminar este comentario?')) return;
-      if (juegos[indexJuego].comentarios && juegos[indexJuego].comentarios[indexComentario]) {
-        juegos[indexJuego].comentarios.splice(indexComentario, 1);
-        guardarEnLocalStorage();
+    function guardarComentario(idx, input) {
+      if (input.value.trim()) {
+        if (!juegos[idx].comentarios) juegos[idx].comentarios = [];
+        juegos[idx].comentarios.push({ texto: input.value, fecha: new Date().toLocaleDateString() });
+        input.value = '';
+        guardarDatos();
         actualizarTabla();
         actualizarTablaTodos();
-        mostrarMensaje('Comentario eliminado.');
       }
     }
 
-    function getValoresUnicos(key) {
-      if (key === 'clasificacion') {
-        // Split by comma and trim, then get unique values
-        const all = juegos.flatMap(j => (j.clasificacion||'').split(',').map(s => s.trim()).filter(Boolean));
-        return Array.from(new Set(all));
+    function eliminarComentario(idx, cIdx) {
+      if (confirm('Â¿Eliminar?')) {
+        juegos[idx].comentarios.splice(cIdx, 1);
+        guardarDatos();
+        actualizarTabla();
+        actualizarTablaTodos();
       }
-      if (key === 'materiales') {
-        // Split by comma and trim, then get unique values
-        const all = juegos.flatMap(j => (j.materiales||'').split(',').map(s => s.trim()).filter(Boolean));
-        return Array.from(new Set(all));
-      }
-      return Array.from(new Set(juegos.map(j => j[key]).filter(v => v && v !== '')));
+    }
+
+    // Actualizaciones
+    function actualizarClasificacionSelects() {
+      const vals = [$('clasificacion1').value, $('clasificacion2').value, $('clasificacion3').value].filter(v => v);
+      [$('clasificacion1'), $('clasificacion2'), $('clasificacion3')].forEach(sel => {
+        Array.from(sel.options).forEach(opt => {
+          if (opt.value !== '') opt.disabled = vals.includes(opt.value) && opt.value !== sel.value;
+        });
+      });
+    }
+
+    function actualizarEstadosCampos() {
+      ['nombre', 'clasificacion1', 'clasificacion2', 'clasificacion3', 'intensidad', 'lugar', 'participantesMin', 'participantesMax', 'edadMin', 'edadMax', 'objetivo', 'desarrollo', 'materiales', 'variantes', 'observaciones'].forEach(id => {
+        const campo = $(id);
+        if (campo) campo.classList.toggle('filled', !!campo.value);
+      });
+    }
+
+    function actualizarIntensidadColor() {
+      const int = $('intensidad');
+      int.className = int.className.replace(/intensidad-\w+/g, '');
+      if (int.value === 'Baja') int.classList.add('intensidad-baja');
+      else if (int.value === 'Media') int.classList.add('intensidad-media');
+      else if (int.value === 'Alta') int.classList.add('intensidad-alta');
+    }
+
+    // Juegos
+    function registrarJuego() {
+      const juego = {
+        nombre: $('nombre').value,
+        clasificacion: [$('clasificacion1').value, $('clasificacion2').value, $('clasificacion3').value].filter(v => v).join(', '),
+        intensidad: $('intensidad').value,
+        lugar: $('lugar').value,
+        participantes: $('participantesMin').value && $('participantesMax').value ? $('participantesMin').value + '-' + $('participantesMax').value : '',
+        edades: $('edadMin').value && $('edadMax').value ? $('edadMin').value + '-' + $('edadMax').value : '',
+        objetivo: $('objetivo').value,
+        desarrollo: $('desarrollo').value,
+        materiales: $('materiales').value,
+        variantes: $('variantes').value,
+        observaciones: $('observaciones').value,
+        fechaRegistro: new Date().toLocaleDateString(),
+        comentarios: []
+      };
+      if (!juego.nombre) { alert('Nombre requerido'); return; }
+      juegos.push(juego);
+      guardarDatos();
+      limpiarFormulario();
+      actualizarTabla();
+      actualizarTablaTodos();
+    }
+
+    function limpiarFormulario() {
+      ['nombre', 'clasificacion1', 'clasificacion2', 'clasificacion3', 'intensidad', 'lugar', 'participantesMin', 'participantesMax', 'edadMin', 'edadMax', 'objetivo', 'desarrollo', 'materiales', 'variantes', 'observaciones'].forEach(id => {
+        const c = $(id);
+        if (c) { c.value = ''; c.classList.remove('filled'); }
+      });
+      actualizarIntensidadColor();
     }
 
     function renderizarFiltrosPlanificar() {
-      const filtros = [
-        { key: 'clasificacion', label: 'Clasificación', type: 'select' },
-        { key: 'intensidad', label: 'Intensidad', type: 'select' },
-        { key: 'lugar', label: 'Lugar', type: 'select' },
-        { key: 'participantes', label: 'Participantes', type: 'number' },
-        { key: 'edades', label: 'Edad', type: 'number' },
-        { key: 'materiales', label: 'Materiales', type: 'select' }
-      ];
-      const cont = document.getElementById('planificar-filtros');
-      if (!cont) return;
-      cont.innerHTML = filtros.map(f => {
-        if (f.type === 'number') {
-          return `<div><label for="planif-${f.key}">${f.label}</label><input type="number" id="planif-${f.key}" min="0" placeholder="${f.label}" oninput="filtrarPlanificar()"></div>`;
-        } else {
-          const opciones = getValoresUnicos(f.key);
-          return `<div><label for="planif-${f.key}">${f.label}</label><select id="planif-${f.key}" onchange="filtrarPlanificar()"><option value="">(Todos)</option>${opciones.map(o => `<option value="${o}">${o}</option>`).join('')}</select></div>`;
-        }
-      }).join('');
+      const clasif = new Set(), intens = new Set(), lug = new Set(), mat = new Set();
+      juegos.forEach(j => {
+        if (j.clasificacion) j.clasificacion.split(',').forEach(c => clasif.add(c.trim()));
+        if (j.intensidad) intens.add(j.intensidad);
+        if (j.lugar) lug.add(j.lugar);
+        if (j.materiales) j.materiales.split(',').forEach(m => mat.add(m.trim()));
+      });
+      [{ id: 'filtroClasificacion', vals: Array.from(clasif) }, { id: 'filtroIntensidad', vals: Array.from(intens) }, { id: 'filtroLugar', vals: Array.from(lug) }, { id: 'filtroMateriales', vals: Array.from(mat) }].forEach(({ id, vals }) => {
+        vals.forEach(v => {
+          const opt = document.createElement('option');
+          opt.value = v;
+          opt.text = v;
+          $(id).appendChild(opt);
+        });
+      });
     }
 
     function filtrarPlanificar() {
-      const filtros = [
-        { key: 'clasificacion', id: 'planif-clasificacion' },
-        { key: 'intensidad', id: 'planif-intensidad' },
-        { key: 'lugar', id: 'planif-lugar' },
-        { key: 'participantes', id: 'planif-participantes' },
-        { key: 'edades', id: 'planif-edades' },
-        { key: 'materiales', id: 'planif-materiales' }
-      ];
-      let resultados = juegos.filter(juego => {
-        return filtros.every(f => {
-          const val = document.getElementById(f.id)?.value || '';
-          if (!val) return true;
-          if (f.key === 'clasificacion') {
-            // Match if any of the game's categories matches the selected value
-            return (juego.clasificacion||'').split(',').map(s=>s.trim()).includes(val);
-          }
-          if (f.key === 'materiales') {
-            // Match if any of the game's materials matches the selected value
-            return (juego.materiales||'').split(',').map(s=>s.trim()).includes(val);
-          }
-          if (f.key === 'participantes') {
-            // Check if the number is between min and max
-            const h = parseInt(val, 10);
-            if (isNaN(h)) return true;
-            let min = null, max = null;
-            if (juego.participantes) {
-              const partes = juego.participantes.split('-').map(x=>parseInt(x.trim(),10));
-              if (partes.length === 2 && !isNaN(partes[0]) && !isNaN(partes[1])) {
-                min = partes[0]; max = partes[1];
-              } else if (partes.length === 1 && !isNaN(partes[0])) {
-                min = max = partes[0];
-              }
-            }
-            if (min !== null && max !== null) {
-              return h >= min && h <= max;
-            }
-            return false;
-          }
-          if (f.key === 'edades') {
-            const h = parseInt(val, 10);
-            if (isNaN(h)) return true;
-            let min = null, max = null;
-            if (juego.edades) {
-              const partes = juego.edades.split('-').map(x=>parseInt(x.trim(),10));
-              if (partes.length === 2 && !isNaN(partes[0]) && !isNaN(partes[1])) {
-                min = partes[0]; max = partes[1];
-              } else if (partes.length === 1 && !isNaN(partes[0])) {
-                min = max = partes[0];
-              }
-            }
-            if (min !== null && max !== null) {
-              return h >= min && h <= max;
-            }
-            return false;
-          }
-          return (juego[f.key] || '') === val;
-        });
-      });
-      renderizarResultadosPlanificar(resultados);
-    }
-
-    function renderizarResultadosPlanificar(juegosFiltrados) {
-      const cont = document.getElementById('planificar-contenido');
-      if (!cont) return;
-      if (!juegosFiltrados.length) {
-        cont.innerHTML = '<p>No hay juegos que coincidan con los filtros seleccionados.</p>';
-        return;
-      }
-      let html = '<div class="tabla-scroll-wrapper"><table class="tabla-compacta"><thead><tr>' +
-        '<th>Nombre</th><th>Clasificación</th><th>Intensidad</th><th>Lugar</th><th>Participantes</th><th>Edad</th><th>Materiales</th><th>Ficha</th>' +
-        '</tr></thead><tbody>';
-      juegosFiltrados.forEach(juego => {
-        const idx = juegos.findIndex(j =>
-          j.nombre === juego.nombre &&
-          j.clasificacion === juego.clasificacion &&
-          j.intensidad === juego.intensidad &&
-          j.lugar === juego.lugar &&
-          j.participantes === juego.participantes &&
-          j.edades === juego.edades &&
-          j.objetivo === juego.objetivo &&
-          j.desarrollo === juego.desarrollo &&
-          j.materiales === juego.materiales &&
-          j.variantes === juego.variantes &&
-          j.observaciones === juego.observaciones
-        );
-        html += '<tr>' +
-          `<td>${juego.nombre || ''}</td>` +
-          `<td>${juego.clasificacion || ''}</td>` +
-          `<td>${juego.intensidad || ''}</td>` +
-          `<td>${juego.lugar || ''}</td>` +
-          `<td>${juego.participantes || ''}</td>` +
-          `<td>${juego.edades || ''}</td>` +
-          `<td>${juego.materiales || ''}</td>` +
-          `<td><button class="mini secondary" onclick="mostrarFicha(juegos[${idx}])">Ver ficha</button> <button class="mini secondary" onclick="descargarFichaPDF(juegos[${idx}])">PDF</button></td>` +
-          '</tr>';
-      });
-      html += '</tbody></table></div>';
-      cont.innerHTML = html;
-      cont.querySelectorAll('.comentario-input').forEach(input => {
-        input.addEventListener('change', function() {
-          const idx = parseInt(this.dataset.idx, 10);
-          juegos[idx].comentarioUsuario = this.value;
-          guardarEnLocalStorage();
-        });
+      const c = $('filtroClasificacion').value, i = $('filtroIntensidad').value, l = $('filtroLugar').value, p = parseInt($('filtroParticipantes').value) || 0, e = parseInt($('filtroEdad').value) || 0, m = $('filtroMateriales').value;
+      const tbody = $('tabla-planificar').querySelector('tbody');
+      tbody.innerHTML = '';
+      juegos.filter(j => (!c || j.clasificacion?.includes(c)) && (!i || j.intensidad === i) && (!l || j.lugar === l) && (!m || j.materiales?.includes(m)) && (p === 0 || !j.participantes || (j.participantes.split('-').map(n => parseInt(n))) && p >= parseInt(j.participantes.split('-')[0]) && p <= parseInt(j.participantes.split('-')[1])) && (e === 0 || !j.edades || (j.edades.split('-').map(n => parseInt(n))) && e >= parseInt(j.edades.split('-')[0]) && e <= parseInt(j.edades.split('-')[1]))).forEach(j => {
+        const idx = juegos.indexOf(j);
+        const fila = document.createElement('tr');
+        fila.innerHTML = `<td>${j.nombre}</td><td>${j.clasificacion}</td><td>${j.intensidad}</td><td>${j.lugar}</td><td>${j.participantes}</td><td>${j.edades}</td><td>${j.materiales}</td><td><button class="secondary mini" onclick="mostrarFicha(${idx})">Ver ficha</button><button class="secondary mini" onclick="descargarFichaPDF(${idx})">PDF</button></td>`;
+        tbody.appendChild(fila);
       });
     }
 
-    function mostrarFicha(juego) {
-      // Define the order and labels for the ficha
-      const campos = [
-        { key: 'nombre', label: 'Nombre' },
-        { key: 'clasificacion', label: 'Clasificación' },
-        { key: 'intensidad', label: 'Intensidad' },
-        { key: 'lugar', label: 'Lugar' },
-        { key: 'participantes', label: 'Participantes' },
-        { key: 'edades', label: 'Edad' },
-        { key: 'objetivo', label: 'Objetivo' },
-        { key: 'desarrollo', label: 'Desarrollo' },
-        { key: 'materiales', label: 'Materiales' },
-        { key: 'variantes', label: 'Variantes' },
-        { key: 'observaciones', label: 'Observaciones' }
-      ];
-      let html = '<div style="padding:1.5rem;max-width:420px;background:#fff;border-radius:18px;box-shadow:0 8px 32px #0002;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;overflow-y:auto;max-height:90vh;">';
-      html += `<h2 style="margin:0 0 1.2em 0;text-align:center;font-size:1.7em;letter-spacing:-0.03em;">${juego.nombre || '-'}</h2>`;
-      html += '<ul style="list-style:none;padding:0;">';
-      campos.forEach(({key, label}) => {
-        if (key === 'nombre') return;
-        html += `<li style="margin-bottom:0.7em;"><strong>${label}:</strong> ${juego[key] && juego[key].trim() ? juego[key] : '-'}</li>`;
-      });
-      // Mostrar comentarios
-      html += `<li style="margin-bottom:0.7em;"><strong>Comentarios:</strong>`;
-      if (juego.comentarios && juego.comentarios.length > 0) {
-        html += '<ul style="list-style:none;padding:0;margin-left:0;margin-top:0.5em;">';
-        juego.comentarios.forEach(comentario => {
-          html += `<li style="margin-bottom:0.5em;padding:0.5em;background:#f0f0f0;border-radius:6px;border-left:3px solid #666;"><em>${comentario.fecha}</em>: ${comentario.texto}</li>`;
-        });
-        html += '</ul>';
-      } else {
-        html += ' <em>Sin comentarios</em>';
+    function habilitarModoEditar() {
+      const p = prompt('ContraseÃ±a:');
+      if (p === 'jugar es abrir la puerta prohibida') {
+        event.target.nextElementSibling?.classList.toggle('modo-editar');
       }
-      html += '</li>';
-      html += '</ul>';
-      html += '<div style="text-align:right;"><button onclick="cerrarFicha()" style="margin-top:1em;padding:0.6em 1.2em;border-radius:999px;background:#111827;color:#fff;border:none;font-weight:700;">Cerrar</button></div>';
-      html += '</div>';
-      let overlay = document.createElement('div');
-      overlay.id = 'ficha-overlay';
-      overlay.style = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:9998;';
-      overlay.onclick = cerrarFicha;
-      document.body.appendChild(overlay);
-      let modal = document.createElement('div');
-      modal.id = 'ficha-modal';
-      modal.innerHTML = html;
-      document.body.appendChild(modal);
     }
 
-    function cerrarFicha() {
-      document.getElementById('ficha-modal')?.remove();
-      document.getElementById('ficha-overlay')?.remove();
+    function mostrarFicha(idx) {
+      const j = juegos[idx];
+      if (!j) return;
+      const cont = $('fichaContent');
+      cont.innerHTML = `<h2>${j.nombre}</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;font-size:0.9rem;"><div><strong>ClasificaciÃ³n:</strong> ${j.clasificacion || '-'}</div><div><strong>Edad:</strong> ${j.edades || '-'}</div><div><strong>Intensidad:</strong> ${j.intensidad || '-'}</div><div><strong>Participantes:</strong> ${j.participantes || '-'}</div><div><strong>Lugar:</strong> ${j.lugar || '-'}</div><div><strong>Materiales:</strong> ${j.materiales || '-'}</div></div><h3>Objetivo</h3><p>${j.objetivo || '-'}</p><h3>Desarrollo</h3><p>${j.desarrollo || '-'}</p><h3>Variantes</h3><p>${j.variantes || '-'}</p><h3>Observaciones</h3><p>${j.observaciones || '-'}</p><h3>Comentarios</h3><div class="comentarios-list">${j.comentarios?.length > 0 ? j.comentarios.map(c => `<div class="comentario-item"><div class="comentario-fecha">${c.fecha}</div><div class="comentario-texto">${c.texto}</div></div>`).join('') : '<p style="color:#999;">Sin comentarios</p>'}</div><div class="btn-editar-modal" style="margin-top:1.5rem;"><button class="primary" onclick="editarJuego(${idx})">Editar</button><button class="danger" onclick="eliminarJuego(${idx})">Eliminar</button><button class="secondary" onclick="cerrarFicha()">Cerrar</button></div>`;
+      $('fichaModal').classList.add('show');
     }
 
-    window.filtrarPlanificar = filtrarPlanificar;
+    function cerrarFicha() { $('fichaModal').classList.remove('show'); }
 
-    // --- PDF export ---
-    function descargarFichaPDF(juego) {
-      if (typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined') {
-        alert('Para exportar a PDF, se necesita la librería jsPDF.');
-        return;
+    function editarJuego(idx) {
+      const j = juegos[idx];
+      const cls = j.clasificacion.split(',').map(c => c.trim());
+      $('nombre').value = j.nombre;
+      $('clasificacion1').value = cls[0] || '';
+      $('clasificacion2').value = cls[1] || '';
+      $('clasificacion3').value = cls[2] || '';
+      $('intensidad').value = j.intensidad;
+      $('lugar').value = j.lugar;
+      const p = j.participantes.split('-');
+      $('participantesMin').value = p[0] || '';
+      $('participantesMax').value = p[1] || '';
+      const e = j.edades.split('-');
+      $('edadMin').value = e[0] || '';
+      $('edadMax').value = e[1] || '';
+      $('objetivo').value = j.objetivo;
+      $('desarrollo').value = j.desarrollo;
+      $('materiales').value = j.materiales;
+      $('variantes').value = j.variantes;
+      $('observaciones').value = j.observaciones;
+      juegos.splice(idx, 1);
+      guardarDatos();
+      cerrarFicha();
+      actualizarTabla();
+      actualizarTablaTodos();
+      limpiarFormulario();
+      document.querySelector('.tab[data-tab="formulario"]').click();
+    }
+
+    function eliminarJuego(idx) {
+      if (confirm('Â¿Eliminar este juego?')) {
+        juegos.splice(idx, 1);
+        guardarDatos();
+        cerrarFicha();
+        actualizarTabla();
+        actualizarTablaTodos();
       }
-      const doc = new (window.jspdf ? window.jspdf.jsPDF : window.jsPDF)({
-        orientation: 'portrait',
-        unit: 'pt',
-        format: 'a4'
+    }
+
+    function descargarFichaPDF(idx) {
+      const j = juegos[idx];
+      if (!j) return;
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF('p', 'mm', 'a4');
+      const m = 20, pw = doc.internal.pageSize.getWidth(), ph = doc.internal.pageSize.getHeight(), f = 'times';
+      let y = m, pn = 1;
+      const adnums = () => { doc.setFont(f, 'normal'); doc.setFontSize(10); doc.text(pn.toString(), pw - m, ph - 10); };
+      const addcorn = () => { doc.setDrawColor(100, 200, 180); doc.setLineWidth(0.5); doc.circle(m - 5, m - 5, 20); doc.circle(pw - m + 5, m - 5, 20); doc.circle(m - 5, ph - m + 5, 20); doc.circle(pw - m + 5, ph - m + 5, 20); };
+      addcorn();
+      doc.setFont(f, 'bold'); doc.setFontSize(22); doc.text(j.nombre, pw / 2, y, { align: 'center' }); y += 15;
+      doc.setFont(f, 'normal'); doc.setFontSize(11);
+      doc.text('CLASIFICACIÃ“N:', m, y); doc.text(j.clasificacion || '-', m + 55, y); doc.text('LUGAR:', pw / 2 + 10, y); doc.text(j.lugar || '-', pw / 2 + 50, y); y += 8;
+      doc.text('EDAD:', m, y); doc.text(j.edades || '-', m + 55, y); doc.text('PARTICIPANTES:', pw / 2 + 10, y); doc.text(j.participantes || '-', pw / 2 + 50, y); y += 8;
+      doc.text('INTENSIDAD:', m, y); doc.text(j.intensidad || '-', m + 55, y); y += 15;
+      [{ t: 'OBJETIVOS', c: j.objetivo }, { t: 'MATERIALES', c: j.materiales }, { t: 'DESARROLLO', c: j.desarrollo }, { t: 'VARIANTES', c: j.variantes }, { t: 'OBSERVACIONES', c: j.observaciones }].forEach(s => {
+        if (y > ph - m - 20) { adnums(); doc.addPage(); addcorn(); y = m; pn++; }
+        doc.setFont(f, 'bold'); doc.setFontSize(12); doc.text(s.t, m, y); y += 8;
+        doc.setFont(f, 'normal'); doc.setFontSize(11); const sp = doc.splitTextToSize(s.c || '-', pw - 2 * m); doc.text(sp, m, y); y += Math.max(16, sp.length * 5) + 8;
       });
-      const mainFont = 'times';
-      let y = 40;
-      let pageNum = 1;
-      
-      // Función para agregar decoraciones en esquinas
-      const addCornerDecorations = () => {
-        // Color azul verdoso (similar a la imagen adjunta)
-        doc.setFillColor(100, 200, 180); // Azul-verde suave
-        doc.setDrawColor(80, 180, 160);
-        
-        // Esquina superior izquierda
-        doc.circle(15, 15, 20, 'F');
-        // Esquina superior derecha
-        doc.circle(582, 15, 20, 'F');
-        // Esquina inferior izquierda
-        doc.circle(15, 827, 20, 'F');
-        // Esquina inferior derecha
-        doc.circle(582, 827, 20, 'F');
-      };
-      
-      // Función auxiliar para agregar número de página
-      const addPageNumber = () => {
-        doc.setFontSize(10);
-        doc.setTextColor(100, 100, 100);
-        doc.text(pageNum.toString(), 540, 810, {align: 'right'});
-        addCornerDecorations();
-      };
-      
-      // Agregar decoraciones en la primera página
-      addCornerDecorations();
-      
-      // --- TÍTULO ---
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(22);
-      doc.setTextColor(0, 0, 0);
-      doc.text(juego.nombre || '-', 300, y, {align: 'center'});
-      y += 40;
-      
-      // --- DOS COLUMNAS: Datos clave ---
-      const margin = 40;
-      const colWidth = 230;
-      let x1 = margin;
-      let x2 = x1 + colWidth + 40;
-      
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(10);
-      doc.setTextColor(0, 0, 0);
-      
-      // Columna izquierda
-      doc.text('CLASIFICACIÓN:', x1, y);
-      doc.setFont(mainFont, 'normal');
-      doc.text(juego.clasificacion || '-', x1 + 5, y + 14);
-      
-      // Columna derecha
-      doc.setFont(mainFont, 'bold');
-      doc.text('LUGAR:', x2, y);
-      doc.setFont(mainFont, 'normal');
-      doc.text(juego.lugar || '-', x2 + 5, y + 14);
-      
-      y += 36;
-      
-      // Segunda fila
-      doc.setFont(mainFont, 'bold');
-      doc.text('EDAD:', x1, y);
-      doc.setFont(mainFont, 'normal');
-      doc.text(juego.edades || '-', x1 + 5, y + 14);
-      
-      doc.setFont(mainFont, 'bold');
-      doc.text('Nº DE PARTICIPANTES:', x2, y);
-      doc.setFont(mainFont, 'normal');
-      doc.text(juego.participantes || '-', x2 + 5, y + 14);
-      
-      y += 36;
-      
-      // Tercera fila - solo intensidad
-      doc.setFont(mainFont, 'bold');
-      doc.text('INTENSIDAD:', x1, y);
-      doc.setFont(mainFont, 'normal');
-      doc.text(juego.intensidad || '-', x1 + 5, y + 14);
-      
-      y += 40;
-      
-      // --- OBJETIVOS ---
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(11);
-      doc.text('OBJETIVOS:', margin, y);
-      y += 14;
-      doc.setFont(mainFont, 'normal');
-      doc.setFontSize(10);
-      let split = doc.splitTextToSize(juego.objetivo || '-', 500);
-      doc.text(split, margin + 5, y);
-      y += Math.max(18, split.length * 12) + 10;
-      
-      if (y > 700) {
-        addPageNumber();
-        doc.addPage();
-        addCornerDecorations();
-        y = 40;
-        pageNum++;
-      }
-      
-      // --- MATERIALES ---
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(11);
-      doc.text('MATERIALES:', margin, y);
-      y += 14;
-      doc.setFont(mainFont, 'normal');
-      doc.setFontSize(10);
-      split = doc.splitTextToSize(juego.materiales || '-', 500);
-      doc.text(split, margin + 5, y);
-      y += Math.max(18, split.length * 12) + 10;
-      
-      if (y > 700) {
-        addPageNumber();
-        doc.addPage();
-        addCornerDecorations();
-        y = 40;
-        pageNum++;
-      }
-      
-      // --- DESARROLLO DEL JUEGO ---
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(11);
-      doc.text('DESARROLLO DEL JUEGO:', margin, y);
-      y += 14;
-      doc.setFont(mainFont, 'normal');
-      doc.setFontSize(10);
-      split = doc.splitTextToSize(juego.desarrollo || '-', 500);
-      doc.text(split, margin + 5, y);
-      y += Math.max(18, split.length * 12) + 10;
-      
-      if (y > 700) {
-        addPageNumber();
-        doc.addPage();
-        addCornerDecorations();
-        y = 40;
-        pageNum++;
-      }
-      
-      // --- VARIANTES ---
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(11);
-      doc.text('VARIANTES:', margin, y);
-      y += 14;
-      doc.setFont(mainFont, 'normal');
-      doc.setFontSize(10);
-      if (juego.variantes && juego.variantes.trim()) {
-        let variantes = juego.variantes.split('\n').filter(v => v.trim());
-        variantes.forEach(variante => {
-          if (y > 700) {
-            addPageNumber();
-            doc.addPage();
-            addCornerDecorations();
-            y = 40;
-            pageNum++;
-          }
-          split = doc.splitTextToSize('• ' + variante.trim(), 480);
-          doc.text(split, margin + 10, y);
-          y += Math.max(12, split.length * 12) + 3;
-        });
-      } else {
-        doc.text('-', margin + 5, y);
-        y += 14;
-      }
-      y += 10;
-      
-      if (y > 700) {
-        addPageNumber();
-        doc.addPage();
-        addCornerDecorations();
-        y = 40;
-        pageNum++;
-      }
-      
-      // --- OBSERVACIONES ---
-      doc.setFont(mainFont, 'bold');
-      doc.setFontSize(11);
-      doc.text('OBSERVACIONES:', margin, y);
-      y += 14;
-      doc.setFont(mainFont, 'normal');
-      doc.setFontSize(10);
-      split = doc.splitTextToSize(juego.observaciones || '-', 500);
-      doc.text(split, margin + 5, y);
-      y += Math.max(18, split.length * 12) + 10;
-      
-      if (y > 700) {
-        addPageNumber();
-        doc.addPage();
-        addCornerDecorations();
-        y = 40;
-        pageNum++;
-      }
-      
-      // --- COMENTARIOS (si existen) ---
-      if (juego.comentarios && juego.comentarios.length > 0) {
-        if (y > 700) {
-          addPageNumber();
-          doc.addPage();
-          addCornerDecorations();
-          y = 40;
-          pageNum++;
-        }
-        
-        doc.setFont(mainFont, 'bold');
-        doc.setFontSize(11);
-        doc.text('COMENTARIOS:', margin, y);
-        y += 14;
-        doc.setFont(mainFont, 'normal');
-        doc.setFontSize(10);
-        
-        juego.comentarios.forEach(comentario => {
-          if (y > 700) {
-            addPageNumber();
-            doc.addPage();
-            addCornerDecorations();
-            y = 40;
-            pageNum++;
-          }
-          doc.setTextColor(100, 100, 100);
-          doc.setFont(mainFont, 'italic');
-          doc.text(comentario.fecha, margin + 5, y);
-          doc.setFont(mainFont, 'normal');
-          doc.setTextColor(0, 0, 0);
-          split = doc.splitTextToSize(comentario.texto, 480);
-          doc.text(split, margin + 35, y);
-          y += Math.max(16, split.length * 10) + 8;
+      if (y > ph - m - 20) { adnums(); doc.addPage(); addcorn(); y = m; pn++; }
+      doc.setFont(f, 'bold'); doc.setFontSize(12); doc.text('COMENTARIOS', m, y); y += 8;
+      if (j.comentarios?.length > 0) {
+        j.comentarios.forEach(c => {
+          if (y > ph - m - 20) { adnums(); doc.addPage(); addcorn(); y = m; pn++; }
+          doc.setTextColor(100, 100, 100); doc.setFont(f, 'italic'); doc.text(c.fecha, m + 5, y); doc.setFont(f, 'normal'); doc.setTextColor(0, 0, 0); const sp = doc.splitTextToSize(c.texto, pw - 2 * m - 10); doc.text(sp, m + 35, y); y += Math.max(16, sp.length * 5) + 8;
         });
       }
-      
-      // Número de página final
-      addPageNumber();
-      doc.save((juego.nombre || 'ficha') + '.pdf');
+      adnums(); doc.save((j.nombre || 'ficha') + '.pdf');
     }
 
     window.descargarFichaPDF = descargarFichaPDF;
+    window.mostrarFicha = mostrarFicha;
+    window.cerrarFicha = cerrarFicha;
+    window.editarJuego = editarJuego;
+    window.eliminarJuego = eliminarJuego;
+    window.eliminarComentario = eliminarComentario;
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Cargar primero desde localStorage, luego intentar Firebase
       cargarDesdeLocalStorage();
-      if (firebaseReady) {
-        cargarDesdeFirebase();
-      }
+      if (firebaseReady) cargarDesdeFirebase();
       actualizarTabla();
       actualizarTablaTodos();
       actualizarClasificacionSelects();
@@ -1436,87 +905,51 @@
       $('guardarBtn').addEventListener('click', registrarJuego);
       $('limpiarBtn').addEventListener('click', limpiarFormulario);
       $('intensidad').addEventListener('change', actualizarIntensidadColor);
-      ['clasificacion1','clasificacion2','clasificacion3'].forEach(id => {
+      ['clasificacion1', 'clasificacion2', 'clasificacion3'].forEach(id => {
         $(id).addEventListener('change', actualizarClasificacionSelects);
         $(id).addEventListener('change', actualizarEstadosCampos);
       });
-
-      document.querySelectorAll('input, select, textarea').forEach(campo => {
-        campo.addEventListener('input', actualizarEstadosCampos);
-        campo.addEventListener('change', actualizarEstadosCampos);
+      document.querySelectorAll('input, select, textarea').forEach(c => {
+        c.addEventListener('input', actualizarEstadosCampos);
+        c.addEventListener('change', actualizarEstadosCampos);
       });
 
-      // --- Pestañas ---
-      const tabButtons = document.querySelectorAll('.tab');
-      const tabPanels = document.querySelectorAll('.tab-panel');
-      tabButtons.forEach(btn => {
+      // PESTAÃ‘AS
+      const tabs = document.querySelectorAll('.tab');
+      const panels = document.querySelectorAll('.tab-panel');
+      tabs.forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
-          // Quitar clase active de todos los botones y paneles
-          tabButtons.forEach(b => b.classList.remove('active'));
-          tabPanels.forEach(p => p.classList.remove('active'));
-          // Activar el botón y panel correspondiente
+          tabs.forEach(b => b.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
           this.classList.add('active');
           const panel = document.getElementById('tab-' + this.dataset.tab);
           if (panel) panel.classList.add('active');
-          // Acciones al cambiar de pestaña
-          if (this.dataset.tab === 'planificar') {
-            renderizarFiltrosPlanificar();
-            filtrarPlanificar();
-          }
-          if (this.dataset.tab === 'todos') {
-            actualizarTablaTodos();
-          }
-          if (this.dataset.tab === 'buscar') {
-            actualizarTabla();
-          }
+          if (this.dataset.tab === 'planificar') { renderizarFiltrosPlanificar(); filtrarPlanificar(); }
+          if (this.dataset.tab === 'todos') actualizarTablaTodos();
+          if (this.dataset.tab === 'buscar') actualizarTabla();
         });
       });
 
-      // Buscar
-      const filtroInput = document.getElementById('filtro');
-      if (filtroInput) {
-        filtroInput.addEventListener('input', actualizarTabla);
-      }
-      // Editar modo botones
-      const btnEditarModoBuscar = document.getElementById('btnEditarModoBuscar');
-      if (btnEditarModoBuscar) btnEditarModoBuscar.addEventListener('click', habilitarModoEditar);
-      const btnEditarModoTodos = document.getElementById('btnEditarModoTodos');
-      if (btnEditarModoTodos) btnEditarModoTodos.addEventListener('click', habilitarModoEditar);
+      $('filtro')?.addEventListener('input', actualizarTabla);
+      $('btnEditarModoBuscar')?.addEventListener('click', habilitarModoEditar);
+      $('btnEditarModoTodos')?.addEventListener('click', habilitarModoEditar);
 
-      // Inicializar solo el panel activo y asegurar que solo uno tenga la clase 'active'
-      tabPanels.forEach((p, i) => {
-        if (i === 0) {
-          p.classList.add('active');
-        } else {
-          p.classList.remove('active');
-        }
+      panels.forEach((p, i) => i === 0 ? p.classList.add('active') : p.classList.remove('active'));
+      tabs.forEach((b, i) => i === 0 ? b.classList.add('active') : b.classList.remove('active'));
+
+      ['filtroClasificacion', 'filtroIntensidad', 'filtroLugar', 'filtroParticipantes', 'filtroEdad', 'filtroMateriales'].forEach(id => {
+        const el = $(id);
+        if (el) el.addEventListener('change', filtrarPlanificar);
       });
-      tabButtons.forEach((b, i) => {
-        if (i === 0) {
-          b.classList.add('active');
-        } else {
-          b.classList.remove('active');
-        }
-      });
-      // Inicializar filtros planificar si la pestaña activa es planificar
-      const tabActiva = document.querySelector('.tab.active');
-      if (tabActiva && tabActiva.dataset.tab === 'planificar') {
-        renderizarFiltrosPlanificar();
-        filtrarPlanificar();
-      }
-      actualizarEstadosCampos && actualizarEstadosCampos();
+      $('filtroParticipantes')?.addEventListener('input', filtrarPlanificar);
+      $('filtroEdad')?.addEventListener('input', filtrarPlanificar);
     });
 
-    // Guardar datos antes de cerrar o cambiar de página
-    window.addEventListener('beforeunload', () => {
-      guardarDatos();
-    });
+    window.addEventListener('beforeunload', () => guardarDatos());
+    window.addEventListener('blur', () => guardarDatos());
 
-    // Guardar también cuando pierde el foco la ventana
-    window.addEventListener('blur', () => {
-      guardarDatos();
-    });
+    $('fichaModal').addEventListener('click', function(e) { if (e.target === this) cerrarFicha(); });
+    document.querySelector('.close')?.addEventListener('click', cerrarFicha);
   </script>
 </body>
-</html>
